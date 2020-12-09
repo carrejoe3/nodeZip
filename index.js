@@ -14,8 +14,10 @@ rl.question("Give me Veeva folder to zip ", (answer) => {
 
   rl.close();
 
+  const splitFolderName = answer.split('/')
+
   // create a file to stream archive data to.
-  const output = fs.createWriteStream(answer + '/archive.zip');
+  const output = fs.createWriteStream(splitFolderName[splitFolderName.length - 1] + '.zip');
   const archive = archiver('zip', {
     zlib: { level: 9 } // Sets the compression level.
   });
